@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"> <!--thymeleaf 문법을 쓸 수 있게 함 : 템플릿 엔진으로써-->
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body> 
+<p th:text="'hello. ' + ${name}">hello! empty</p> <!--${name}가 helloController에서의 attributeValue로 치환된다.-->
+</body>
+</html>
