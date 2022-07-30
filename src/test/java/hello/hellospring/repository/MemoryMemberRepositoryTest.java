@@ -2,6 +2,9 @@ package hello.hellospring.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import hello.hellospring.domain.Member;
@@ -10,6 +13,12 @@ import hello.hellospring.domain.Member;
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
+    //테스트가 끝날때마다 리포지토리를 깔끔하게 지워주는 코드가 필요함.
+    @AfterEach // 콜백 메서드 : 밑의 메서드가 실행이 끝날 때마다 동작이 실행.
+    public void afterEach() {
+        repository.clearStore(); // 테스트가 하나 끝날 때마다 리포지토리를 지운다.
+    }
+    
     @Test
     public void save() {
         Member member = new Member();
@@ -37,5 +46,20 @@ import hello.hellospring.domain.Member;
         Member result = repository.findByName("Spring1").get();
 
         assertThat(result).isEqualTo(member1);
+    }
+
+    @Test
+    public void findAll() {
+        Member member1 = new Member();
+        member1.setName("spring1");
+        repository.save(member1);
+
+        Member member2 = new Member();
+        member2.setName("spring1");
+        repository.save(member2);
+
+        List<Member> result = repository.findAll();
+
+        assertThat(result.size()).isEqualTo(2);
     }
 }
