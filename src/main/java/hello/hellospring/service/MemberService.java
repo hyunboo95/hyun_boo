@@ -10,7 +10,7 @@ public class MemberService {
     
     private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository) { // memberRepository를 외부에서 넣어주도록 바꿈 -> Dependency Injection
         this.memberRepository = memberRepository;
     }
 
