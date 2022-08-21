@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 
-@Service // 스프링이 올라올때 서비스를 인식하고 스프링 빈을 등록해줌.
+//@Service // 스프링이 올라올때 서비스를 인식하고 스프링 빈을 등록해줌.
 public class MemberService {
     
     private final MemberRepository memberRepository;
